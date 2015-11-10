@@ -9,17 +9,30 @@ class Car
 
 	public function go()//メソッドの宣言
 	{
-		echo '車が走りました!';
-		$this->gasoline--;//そのクラス内での関数にアクセス出来る。
-		echo '残りのガソリンは'. $this->gasoline . 'Lです<br>';
-	}
+		if($this->gasoline > 0)
+		{
+			echo '車が走りました!';
+			$this->gasoline--;//そのクラス内での関数にアクセス出来る。
+			echo '残りのガソリンは'. $this->gasoline . 'Lです<br>';
+	     }
+	     else
+	     {
+            echo '給油してください!<br>';
+	     }
+    }
+	public function supply($litter)
+	{
+		$this->gasoline += $litter;
+		echo $litter . 'L給油しました。残りのガソリンは'. $this->gasoline . 'Lです<br>';
+	}	 
+
 }
 
 $myCar = new Car;//Carというクラス(設計図)を元にしてインスタンスを作る。
-
-$myCar->go();
 
 for ($i = 0; $i < 50; $i++)
 {
     $myCar->go();
 }
+
+$myCar->supply(10);
