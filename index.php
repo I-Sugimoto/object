@@ -42,6 +42,15 @@ class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCa
   const STARTING_FARE = 730;//定数はすべて大文字で記入。
   public $fare = self::STARTING_FARE;//self::で定数にアクセス出来る。
 
+  public static $number0fTaxis =0;
+
+  public function __construct($gasoline)
+  {
+     $this->gasoline =$gasoline;
+     self::$number0fTaxis++;
+
+  }
+
   public function go()
   {  
   	 parent::go();//親クラスのプロパティにアクセスが出来る。
@@ -54,8 +63,16 @@ class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCa
   	$this->fare = self::STARTING_FARE;
   }
 }
-$myTaxi = new Taxi(50);//Taxiクラスを元にしてインスタンス(実体)を作る。
-$myTaxi->go();
+// $myTaxi = new Taxi(50);//Taxiクラスを元にしてインスタンス(実体)を作る。
+// $myTaxi->go();
 
-$myTaxi2 = new Taxi(20);//Taxiクラスを元にしてインスタンス(実体)を作る。
-$myTaxi2->go();
+// $myTaxi2 = new Taxi(20);//Taxiクラスを元にしてインスタンス(実体)を作る。
+// $myTaxi2->go();
+
+// echo Taxi::$number0fTaxis; 
+
+$myTaxi1 = new Taxi(50);
+$myTaxi2 = new Taxi(50);
+$myTaxi3 = new Taxi(50);
+
+Taxi::countTaxis();
