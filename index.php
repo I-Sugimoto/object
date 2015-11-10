@@ -4,6 +4,8 @@
 //メソッド = クラス内で宣言された関数
 //クラスの継承を行う。もともとあるクラスを引き続き使うことが出来る。
 //定数とself::
+//会計機能の追加
+
 class Car//親クラス
 {
 	public $gasoline = 30;//プロパティ
@@ -32,12 +34,18 @@ class Car//親クラス
 class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCarの内容を引き継いでいる。
 { 
   const STARTING_FARE = 730;//定数はすべて大文字で記入。
-  public $fare = self::STARTING_FARE;
+  public $fare = self::STARTING_FARE;//self::で定数にアクセス出来る。
 
   public function go()
   {  
   	 parent::go();//親クラスのプロパティにアクセスが出来る。
      $this->fare += 90;
+  }
+
+  public function checkout()
+  {
+  	echo 'お会計は' . $this->fare . '円です<br>';
+  	$this->fare = self::STARTING_FARE;
   }
 }
 $myTaxi = new Taxi;//Taxiクラスを元にしてインスタンス(実体)を作る。
@@ -49,3 +57,13 @@ $myTaxi->go();
 $myTaxi->go();
 
 echo '現在の運賃は'. $myTaxi->fare . '円です';
+
+$myTaxi->checkout();
+
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+$myTaxi->go();
+
+$myTaxi->checkout();
