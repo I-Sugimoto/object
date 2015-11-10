@@ -31,11 +31,20 @@ class Car//親クラス
 
 class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCarの内容を引き継いでいる。
 {
+  public $fare;
 
+  public function go()
+  {  
+  	 parent::go();//親クラスのプロパティにアクセスが出来る。
+     $this->fare += 90;
+  }
 }
 $myTaxi = new Taxi;//Taxiクラスを元にしてインスタンス(実体)を作る。
 
 // echo $myTaxi->gasoline;
 
 $myTaxi->go();
-$myTaxi->supply(10);
+$myTaxi->go();
+$myTaxi->go();
+
+echo '現在の運賃は'. $myTaxi->fare . '円です';
