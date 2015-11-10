@@ -5,10 +5,16 @@
 //クラスの継承を行う。もともとあるクラスを引き続き使うことが出来る。
 //定数とself::
 //会計機能の追加
+//コンストラクタ;インスタンス化した時に最初に呼び出される関数。
 
 class Car//親クラス
 {
 	public $gasoline = 30;//プロパティ
+    
+    public function __construct($gasoline)//アンダーバー2つを忘れない!
+    {
+    	$this->gasoline = $gasoline;
+    }
 
 	public function go()//メソッドの宣言
 	{
@@ -48,22 +54,8 @@ class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCa
   	$this->fare = self::STARTING_FARE;
   }
 }
-$myTaxi = new Taxi;//Taxiクラスを元にしてインスタンス(実体)を作る。
-
-// echo $myTaxi->gasoline;
-
-$myTaxi->go();
-$myTaxi->go();
+$myTaxi = new Taxi(50);//Taxiクラスを元にしてインスタンス(実体)を作る。
 $myTaxi->go();
 
-echo '現在の運賃は'. $myTaxi->fare . '円です';
-
-$myTaxi->checkout();
-
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-$myTaxi->go();
-
-$myTaxi->checkout();
+$myTaxi2 = new Taxi(20);//Taxiクラスを元にしてインスタンス(実体)を作る。
+$myTaxi2->go();
