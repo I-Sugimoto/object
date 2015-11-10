@@ -2,8 +2,9 @@
 
 //クラスを宣言→インスタンス化
 //メソッド = クラス内で宣言された関数
+//クラスの継承を行う。もともとあるクラスを引き続き使うことが出来る。
 
-class Car
+class Car//親クラス
 {
 	public $gasoline = 30;//プロパティ
 
@@ -28,11 +29,13 @@ class Car
 
 }
 
-$myCar = new Car;//Carというクラス(設計図)を元にしてインスタンスを作る。
-
-for ($i = 0; $i < 50; $i++)
+class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCarの内容を引き継いでいる。
 {
-    $myCar->go();
-}
 
-$myCar->supply(10);
+}
+$myTaxi = new Taxi;//Taxiクラスを元にしてインスタンス(実体)を作る。
+
+// echo $myTaxi->gasoline;
+
+$myTaxi->go();
+$myTaxi->supply(10);
