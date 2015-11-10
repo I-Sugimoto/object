@@ -3,7 +3,7 @@
 //クラスを宣言→インスタンス化
 //メソッド = クラス内で宣言された関数
 //クラスの継承を行う。もともとあるクラスを引き続き使うことが出来る。
-
+//定数とself::
 class Car//親クラス
 {
 	public $gasoline = 30;//プロパティ
@@ -30,8 +30,9 @@ class Car//親クラス
 }
 
 class Taxi extends Car//Taxiはサブクラス。{}内は空白に見えるがCarの内容を引き継いでいる。
-{
-  public $fare;
+{ 
+  const STARTING_FARE = 730;//定数はすべて大文字で記入。
+  public $fare = self::STARTING_FARE;
 
   public function go()
   {  
